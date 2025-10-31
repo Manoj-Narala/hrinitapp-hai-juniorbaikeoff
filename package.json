@@ -1,0 +1,17 @@
+{
+  "name": "hr-initiative-hub",
+  "version": "1.0.0",
+  "description": "Full-stack HR Approval App for Initiative (HAI) with Vue.js and Express.js",
+  "private": true,
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "start:backend": "cd backend && npm start",
+    "build:frontend": "cd frontend && npm run build",
+    "preview:frontend": "cd frontend && npm run preview"
+  },
+  "keywords": ["hr", "initiatives", "vue", "express", "ai"],
+  "author": "",
+  "license": "MIT"
+}
