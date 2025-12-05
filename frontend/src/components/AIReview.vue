@@ -1,14 +1,14 @@
 <template>
   <div class="max-w-3xl mx-auto">
     <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center">
-      {{ idea.originalStatus === 'rejected' ? 'Resubmit Your Idea' : (idea.initiativeId ? 'Edit Your Idea' : 'AI Analysis Complete') }}
+      {{ idea.originalStatus === 'rejected' ? 'Resubmit Your Idea' : (idea.initiativeId ? 'Edit Your Idea' : 'Analysis Complete') }}
     </h2>
     <p class="text-center text-gray-600 mb-8">
       {{ idea.originalStatus === 'rejected' 
-        ? 'Your idea was previously rejected. You can edit it and regenerate the AI analysis before resubmitting for approval.' 
+        ? 'Your idea was previously rejected. You can edit it and regenerate the analysis before resubmitting for approval.' 
         : (idea.initiativeId 
-          ? 'You can edit your idea and regenerate the AI analysis before resubmitting.' 
-          : 'Please review the AI-generated Statement of Work and Business Value before submitting for approval.')
+          ? 'You can edit your idea and regenerate the analysis before resubmitting.' 
+          : 'Please review the generated Statement of Work and Business Value before submitting for approval.')
       }}
     </p>
 
@@ -20,16 +20,16 @@
     />
 
     <div class="bg-white rounded-lg shadow-xl overflow-hidden space-y-8 p-6 sm:p-8">
-      <!-- AI Analysis Section -->
+      <!-- Analysis Section -->
       <section>
-        <h3 class="text-xl font-semibold text-gray-900 mb-4 border-b pb-2">AI-Generated Proposal</h3>
+        <h3 class="text-xl font-semibold text-gray-900 mb-4 border-b pb-2">Generated Proposal</h3>
         <div class="space-y-6">
           <div>
-            <label class="block text-sm font-medium text-gray-500 mb-1">Business Value Score (from AI)</label>
+            <label class="block text-sm font-medium text-gray-500 mb-1">Business Value Score</label>
             <div class="flex items-start gap-8">
               <!-- Business Value Score -->
               <div>
-                <p class="text-sm text-gray-600 mb-1">Business Value Score (from AI)</p>
+                <p class="text-sm text-gray-600 mb-1">Business Value Score</p>
                 <p :class="['text-5xl font-bold', bvInfo.color]">
                   {{ aiResult.businessValueScore }}/10
                 </p>
@@ -49,7 +49,7 @@
                 {{ bvInfo.text }}
               </span>
               
-              <!-- User Provided or AI Generated Badge -->
+              <!-- User Provided or Auto-Calculated Badge -->
               <span v-if="aiResult.userProvidedScore" class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
                 <svg class="-ml-1 mr-1.5 h-4 w-4 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -58,9 +58,9 @@
               </span>
               <span v-else class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
                 <svg class="-ml-1 mr-1.5 h-4 w-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m12.728 0l.707.707M6.343 17.657l-.707.707m12.728 0l.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
-                BV Score: AI Generated
+                BV Score: Auto-Calculated
               </span>
             
               <!-- Cost Saving / Value Generation Badge -->
@@ -79,7 +79,7 @@
             </div>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-500 mb-1">Value Justification (from AI)</label>
+            <label class="block text-sm font-medium text-gray-500 mb-1">Value Justification</label>
             <p class="text-gray-800 text-base leading-relaxed">{{ aiResult.businessValueJustification }}</p>
           </div>
           <div>

@@ -9,12 +9,12 @@ A **full-stack HR Initiative Management System** with:
 - ✅ 8 reusable components
 - ✅ Responsive UI with Tailwind CSS
 - ✅ Real-time form validation
-- ✅ AI analysis review workflow
+- ✅ Analysis review workflow
 - ✅ Interactive approval dashboard
 
 ### Backend (Express.js)
 - ✅ RESTful API with 7 endpoints
-- ✅ Google Gemini AI integration
+- ✅ Rule-based analysis engine
 - ✅ JSON file-based database
 - ✅ CRUD operations for initiatives
 - ✅ Error handling and validation
@@ -46,7 +46,7 @@ A **full-stack HR Initiative Management System** with:
 backend/
 ├── server.js          ← Express server with all API routes
 ├── db.js              ← Database utilities for JSON file
-├── aiService.js       ← Gemini AI integration
+├── aiService.js       ← Rule-based analysis service
 ├── package.json       ← Backend dependencies
 └── .env.example       ← Environment template
 ```
@@ -107,12 +107,10 @@ data/
 # 1. Run setup
 .\setup.bat
 
-# 2. Edit backend\.env and add your GEMINI_API_KEY
-
-# 3. Start the app
+# 2. Start the app
 .\start.bat
 
-# 4. Open browser to http://localhost:5173
+# 3. Open browser to http://localhost:5173
 ```
 
 ### Option 2: Manual Start
@@ -120,8 +118,6 @@ data/
 # Terminal 1 - Backend
 cd backend
 npm install
-copy .env.example .env
-# Edit .env and add GEMINI_API_KEY
 npm run dev
 
 # Terminal 2 - Frontend
@@ -162,9 +158,9 @@ npm run dev
 
 ---
 
-## 🤖 AI Integration
+## 🤖 Automated Analysis
 
-The system uses **Google Gemini AI** to:
+The system uses **rule-based logic** to:
 
 1. **Generate Statement of Work**
    - Professional project description
@@ -232,7 +228,7 @@ Visual reference included in the approval modal:
 | Styling | Tailwind CSS | Utility CSS |
 | Backend | Express.js | REST API |
 | Runtime | Node.js | JavaScript runtime |
-| AI | Google Gemini | Analysis generation |
+| Analysis | Rule-based | Automated scoring |
 | Database | JSON File | Data persistence |
 
 ---
@@ -242,7 +238,7 @@ Visual reference included in the approval modal:
 | Method | Endpoint | Purpose |
 |--------|----------|---------|
 | GET | `/api/health` | Health check |
-| POST | `/api/analyze` | Generate AI analysis |
+| POST | `/api/analyze` | Generate automated analysis |
 | GET | `/api/initiatives` | Get all initiatives |
 | GET | `/api/initiatives/:id` | Get one initiative |
 | POST | `/api/initiatives` | Create initiative |
@@ -304,15 +300,14 @@ App.vue (Root)
 
 ## 🔐 Environment Variables
 
-Required in `backend/.env`:
+Optional in `backend/.env`:
 
 ```env
 PORT=3000
-GEMINI_API_KEY=your_gemini_api_key_here
 NODE_ENV=development
 ```
 
-**Get API Key:** https://makersuite.google.com/app/apikey
+No API keys required - the analysis engine uses rule-based logic.
 
 ---
 
@@ -338,10 +333,6 @@ NODE_ENV=development
 ### "Port already in use"
 - Change `PORT` in `backend/.env`
 - Change port in `frontend/vite.config.js`
-
-### "AI service not configured"
-- Add `GEMINI_API_KEY` to `backend/.env`
-- Restart backend server
 
 ### Database corruption
 - Delete `data/initiatives.json`
@@ -384,7 +375,6 @@ NODE_ENV=development
 - **Vue.js Docs:** https://vuejs.org/
 - **Express.js Docs:** https://expressjs.com/
 - **Vite Docs:** https://vitejs.dev/
-- **Gemini API:** https://ai.google.dev/docs
 - **Tailwind CSS:** https://tailwindcss.com/
 
 ---

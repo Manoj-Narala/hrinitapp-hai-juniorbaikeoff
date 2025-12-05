@@ -2,7 +2,7 @@
   <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
     <div class="p-6 sm:p-8">
       <h2 class="text-2xl font-bold text-gray-900 mb-1">New Initiative</h2>
-      <p class="text-gray-600 mb-6">Submit your idea for AI-powered analysis and review.</p>
+      <p class="text-gray-600 mb-6">Submit your idea for automated analysis and review.</p>
 
       <MessageBox 
         v-if="error" 
@@ -101,7 +101,7 @@
         <!-- Business Value (Optional) -->
         <div>
           <label for="businessValue" class="block text-sm font-medium text-gray-700 mb-1">
-            Business Value (1-10) <span class="text-gray-500 text-xs">(Optional - AI will suggest if not provided)</span>
+            Business Value (1-10) <span class="text-gray-500 text-xs">(Optional - will be calculated if not provided)</span>
           </label>
           <input
             type="number"
@@ -113,7 +113,7 @@
             class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 px-3 py-2 border"
             placeholder="Rate business value from 1 (low) to 10 (high)"
           />
-          <p class="text-xs text-gray-500 mt-1">Leave empty for AI to estimate based on your idea</p>
+          <p class="text-xs text-gray-500 mt-1">Leave empty for automatic calculation based on your inputs</p>
         </div>
 
         <!-- Monetary Value (Optional) -->
@@ -177,7 +177,7 @@
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            {{ isLoading ? 'Analyzing Idea...' : 'Generate Analysis & SoW' }}
+            {{ isLoading ? 'Generating Analysis...' : 'Generate Analysis & SoW' }}
           </button>
         </div>
       </form>
@@ -257,7 +257,7 @@ export default {
         await emit('submit', { ...idea.value });
       } catch (err) {
         console.error(err);
-        error.value = `Failed to generate AI analysis. Please check your inputs or try again later. ${err.message}`;
+        error.value = `Failed to generate analysis. Please check your inputs or try again later. ${err.message}`;
       } finally {
         isLoading.value = false;
       }
