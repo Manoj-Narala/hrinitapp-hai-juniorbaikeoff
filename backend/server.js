@@ -13,7 +13,10 @@ const PORT = process.env.PORT || 3000;
 const aiService = new AIService(process.env.GEMINI_API_KEY);
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*',  // Allow all origins (for local network only)
+  credentials: true
+}));
 app.use(express.json());
 
 // Authentication middleware

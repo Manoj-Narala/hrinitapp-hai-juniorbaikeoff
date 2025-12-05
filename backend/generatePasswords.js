@@ -10,20 +10,27 @@ async function main() {
   console.log('Generating password hashes...\n');
   
   const po_password = 'po123456';
-  const user_password = 'user123456';
+  const john_password = 'user123456';
+  const sarah_password = 'user456';
   
   const po_hash = await generateHash(po_password);
-  const user_hash = await generateHash(user_password);
+  const john_hash = await generateHash(john_password);
+  const sarah_hash = await generateHash(sarah_password);
   
   console.log('PO Account:');
   console.log('  Username: po_admin');
   console.log('  Password: ' + po_password);
   console.log('  Hash: ' + po_hash);
   console.log('');
-  console.log('User Account:');
+  console.log('User Account - John:');
   console.log('  Username: john_user');
-  console.log('  Password: ' + user_password);
-  console.log('  Hash: ' + user_hash);
+  console.log('  Password: ' + john_password);
+  console.log('  Hash: ' + john_hash);
+  console.log('');
+  console.log('User Account - Sarah:');
+  console.log('  Username: sarah_user');
+  console.log('  Password: ' + sarah_password);
+  console.log('  Hash: ' + sarah_hash);
   console.log('');
   
   // Create users array
@@ -40,10 +47,19 @@ async function main() {
     {
       "id": "user-2",
       "username": "john_user",
-      "password": user_hash,
+      "password": john_hash,
       "role": "USER",
       "name": "John Smith",
       "email": "john@company.com",
+      "createdAt": "2025-10-30T10:00:00.000Z"
+    },
+    {
+      "id": "user-3",
+      "username": "sarah_user",
+      "password": sarah_hash,
+      "role": "USER",
+      "name": "Sarah Johnson",
+      "email": "sarah@company.com",
       "createdAt": "2025-10-30T10:00:00.000Z"
     }
   ];

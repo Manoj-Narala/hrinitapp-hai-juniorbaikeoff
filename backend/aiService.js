@@ -10,10 +10,40 @@ class AIService {
   }
 
   /**
+   * Generate mock analysis when API key is not available
+   */
+  generateMockAnalysis(idea) {
+    const { ideaDescription, businessObjective, businessValue, monetaryValue } = idea;
+    
+    // Determine score based on monetary value or use provided value
+    let score = businessValue || 5;
+    if (!businessValue && monetaryValue) {
+      if (monetaryValue >= 1000) score = 8;
+      else if (monetaryValue >= 500) score = 6;
+      else if (monetaryValue >= 250) score = 4;
+      else score = 2;
+    }
+
+    return {
+      statementOfWork: `This initiative aims to ${businessObjective}. The proposed solution will address ${ideaDescription}. Key deliverables include requirements gathering, system design, implementation, testing, and deployment. The project will follow an agile methodology with regular stakeholder reviews to ensure alignment with business objectives.`,
+      businessValueScore: score,
+      businessValueJustification: `Based on the provided information and business objective, this initiative scores ${score}/10 on the Business Value Scale. ${monetaryValue ? `With an estimated monetary value of £${monetaryValue}K, ` : ''}This represents ${score >= 7 ? 'significant' : score >= 5 ? 'high' : score >= 3 ? 'medium' : 'low'} value potential for the organization.`,
+      costSaving: monetaryValue ? monetaryValue < 0 : false,
+      userProvidedScore: businessValue ? true : false
+    };
+  }
+
+  /**
    * Analyze HR initiative idea using Gemini AI
    */
   async generateAnalysis(idea) {
     const { ideaDescription, businessObjective, businessValue, monetaryValue } = idea;
+
+    // If no API key, return mock analysis
+    if (!this.apiKey || this.apiKey === 'your_gemini_api_key_here') {
+      console.log('⚠️  Using mock AI analysis (no API key configured)');
+      return this.generateMockAnalysis(idea);
+    }
 
     const systemPrompt = `You are an expert HR Technology Product Owner. Your role is to analyze raw ideas from HR business partners and transform them into actionable project proposals.
 
