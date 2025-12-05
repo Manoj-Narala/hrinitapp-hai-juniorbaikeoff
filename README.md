@@ -1,6 +1,6 @@
 # HR Approval App for Initiative (HAI)
 
-A full-stack application for managing HR initiatives with AI-powered analysis and role-based authentication. Built with Vue.js frontend, Express.js backend, and JSON file-based database.
+A full-stack application for managing HR initiatives with automated analysis and role-based authentication. Built with Vue.js frontend, Express.js backend, and JSON file-based database.
 
 ## 🔐 User Authentication
 
@@ -21,7 +21,7 @@ The application includes secure user authentication with two roles:
 ## Features
 
 - 💡 **Idea Submission**: Submit HR initiative ideas with problem statements, solutions, target users, and desired outcomes
-- 🤖 **AI Analysis**: Automatic analysis using Google Gemini AI to generate Statement of Work and Business Value scores
+- 🤖 **Automated Analysis**: Automatic analysis using rule-based logic to generate Statement of Work and Business Value scores
 - 📊 **Approval Dashboard**: Review, approve, or reject initiatives with detailed metrics
 - 💾 **Simple Storage**: JSON file-based database for easy setup and portability
 - 🎨 **Modern UI**: Responsive design with Tailwind CSS
@@ -37,7 +37,7 @@ The application includes secure user authentication with two roles:
 ### Backend
 - **Express.js** - Web framework for Node.js
 - **Node.js** - JavaScript runtime
-- **Google Gemini AI** - AI-powered analysis
+- **Rule-based Analysis** - Automated business value calculation
 - **JSON File Storage** - Simple file-based database
 
 ## Project Structure
@@ -47,7 +47,7 @@ initapp/
 ├── backend/              # Express.js backend
 │   ├── server.js        # Main server file
 │   ├── db.js            # Database utilities
-│   ├── aiService.js     # Gemini AI integration
+│   ├── aiService.js     # Rule-based analysis service
 │   ├── package.json     # Backend dependencies
 │   └── .env.example     # Environment variables template
 ├── frontend/            # Vue.js frontend
@@ -67,7 +67,6 @@ initapp/
 
 - **Node.js** (v16 or higher)
 - **npm** or **yarn**
-- **Google Gemini API Key** (get one from [Google AI Studio](https://makersuite.google.com/app/apikey))
 
 ## Installation
 
@@ -91,20 +90,19 @@ cd ../frontend
 npm install
 ```
 
-### 4. Configure Environment Variables
+### 4. Configure Environment Variables (Optional)
 
-Create a `.env` file in the `backend` directory:
+Create a `.env` file in the `backend` directory if you need to customize settings:
 
 ```bash
 cd ../backend
 copy .env.example .env
 ```
 
-Edit the `.env` file and add your Gemini API key:
+The default configuration works out of the box:
 
 ```env
 PORT=3000
-GEMINI_API_KEY=your_actual_gemini_api_key_here
 NODE_ENV=development
 ```
 
@@ -220,13 +218,6 @@ If port 3000 or 5173 is already in use, you can change them:
 
 - **Backend**: Edit `PORT` in `.env`
 - **Frontend**: Edit `server.port` in `vite.config.js`
-
-### API Key Issues
-
-Make sure your Gemini API key is:
-- Valid and active
-- Properly set in the `.env` file
-- Not wrapped in quotes
 
 ### Database Issues
 

@@ -2,7 +2,6 @@
 
 ## Prerequisites
 - Node.js v16+ installed
-- Google Gemini API Key ([Get one here](https://makersuite.google.com/app/apikey))
 
 ## 🔐 Login Credentials
 
@@ -22,19 +21,13 @@ Double-click `setup.bat` or run in PowerShell:
 .\setup.bat
 ```
 
-### 2. Add API Key
-Edit `backend\.env` and add your Gemini API key:
-```
-GEMINI_API_KEY=your_actual_api_key_here
-```
-
-### 3. Start Application
+### 2. Start Application
 Double-click `start.bat` or run:
 ```powershell
 .\start.bat
 ```
 
-### 4. Open Browser
+### 3. Open Browser
 Navigate to: http://localhost:5173
 
 **Login** with one of the accounts above and start using the app!
@@ -47,8 +40,6 @@ Navigate to: http://localhost:5173
 ```powershell
 cd backend
 npm install
-copy .env.example .env
-# Edit .env and add your GEMINI_API_KEY
 npm run dev
 ```
 
@@ -86,10 +77,6 @@ Navigate to: http://localhost:5173
 ### "Port already in use"
 - Backend: Change `PORT` in `backend\.env`
 - Frontend: Change port in `frontend\vite.config.js`
-
-### "AI service not configured"
-- Make sure `GEMINI_API_KEY` is set in `backend\.env`
-- Restart the backend server
 
 ### Database issues
 - Delete `data\initiatives.json`

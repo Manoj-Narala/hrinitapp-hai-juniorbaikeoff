@@ -9,8 +9,8 @@ const authService = require('./authService');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Initialize AI Service
-const aiService = new AIService(process.env.GEMINI_API_KEY);
+// Initialize AI Service (no API key needed - uses rule-based logic)
+const aiService = new AIService();
 
 // Middleware
 app.use(cors({
@@ -131,13 +131,6 @@ app.post('/api/analyze', requireAuth, async (req, res) => {
       return res.status(400).json({ 
         error: 'Missing required fields',
         required: ['ideaDescription', 'businessObjective']
-      });
-    }
-
-    // Check if API key is configured
-    if (!process.env.GEMINI_API_KEY) {
-      return res.status(500).json({ 
-        error: 'AI service not configured. Please set GEMINI_API_KEY in environment variables.'
       });
     }
 
